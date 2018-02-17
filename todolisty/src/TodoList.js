@@ -1,17 +1,18 @@
-import React , {Component} from 'react'
+import React, { Component } from 'react'
 
 import Item from './Item'
 
 class TodoList extends Component{
+    
     render(){
-        let {TodoItem} = this.props
+
+        let { TodoItem } = this.props
 
         return(
-            <div>
+            <div>To do
                <ul>
-                {TodoItem.map(todo =><li><Item text ={todo}/></li>)}
+                    { TodoItem.map (todo => <li> <Item text = { todo }/> </li>) }
                </ul>
-                
             </div>
         )
     }

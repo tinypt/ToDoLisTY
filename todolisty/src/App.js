@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React , { Component } from 'react'
 
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
+import ListFinish from './ListFinish'
 
 class App extends Component {
 
@@ -9,23 +10,34 @@ class App extends Component {
     super(props)
     this.state ={
       items: []
+      // ,itemsDone: []
     }
     this.addList = this.addList.bind(this)
+    // this.doneList = this.doneList.bind(this)
   }
+
 
   addList(newTodo){
     this.setState({
-      items: this.state.items.push(newTodo)
+      items: this.state.items.concat([newTodo])
     })
   }
 
+  // doneList(newDone){
+  //   this.setState({
+  //     itemsDone: this.state.itemsDone.concat([newDone])
+  //   })
+  // }
+
   render() {
-    let {items} = this.state
+    let { items } = this.state
+    // let { itemsDone } = this.state
 
     return (
       <div>
-        <TodoInput onAddList={this.addList}/>
-        <TodoList TodoItem={items}/>
+        <TodoInput onAddList = { this.addList }/>
+        <TodoList TodoItem = { items }/>
+        {/* <ListFinish ItemDone = { itemsDone }/> */}
       </div>
     )
   }
