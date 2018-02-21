@@ -1,17 +1,17 @@
-// import React, { Component } from 'react'
+import React, { Component } from 'react'
 
-// class ItemFinish extends Component{
+class ItemFinish extends Component{
 
-//     render(){
+    render(){
 
-//         let { text2 } = this.props
+        let { text2 } = this.props
 
-//         return(
-//             <div>
-//                 { text2 }
-//             </div>
-//         )
-//     }
-// }
+        return(
+            <div>
+                { text2 }
+            </div>
+        )
+    }
+}
 
-// export default ItemFinish
+export default ItemFinish

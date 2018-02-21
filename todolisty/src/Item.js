@@ -6,10 +6,10 @@ class Item extends Component{
         super(props)
         this.state = {
             finish: false
-            // ,newDone: ""
+            ,newDone: ""
         }
         this.toggle = this.toggle.bind(this)
-        // this.done = this.done.bind(this)
+        this.done = this.done.bind(this)
     }
 
     toggle(){
@@ -18,18 +18,18 @@ class Item extends Component{
         })
     }
 
-    // done(){
-    //     let { onDoneList } = this.props
-    //     onDoneList(this.state.newDone)
-    //     this.setState({
-    //             newDone: ""
-    //     })
-    // }
+    done(){
+        let { onDoneList } = this.props
+        onDoneList(this.state.newDone)
+        this.setState({
+                newDone: ""
+        })
+    }
 
     render(){
 
         let { text } = this.props
-        // let { newDone } = this.state
+        let { newDone } = this.state
 
         return(
             <div>
@@ -38,7 +38,8 @@ class Item extends Component{
                     value = { this.state.finish }
                     onClick = { this.toggle }
                 />
-                { this.state.finish ? null : "New To do: " + text }
+                { this.state.finish ? "Doing : " + text : "New To do : " + text }
+                <button onClick = { this.done }>DONE</button>
             </div>
         )
     }

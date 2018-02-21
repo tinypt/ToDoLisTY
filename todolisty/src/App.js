@@ -3,6 +3,7 @@ import React , { Component } from 'react'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
 import ListFinish from './ListFinish'
+import './TodoStyle.css'
 
 class App extends Component {
 
@@ -10,10 +11,10 @@ class App extends Component {
     super(props)
     this.state ={
       items: []
-      // ,itemsDone: []
+      ,itemsDone: []
     }
     this.addList = this.addList.bind(this)
-    // this.doneList = this.doneList.bind(this)
+    this.doneList = this.doneList.bind(this)
   }
 
 
@@ -23,21 +24,22 @@ class App extends Component {
     })
   }
 
-  // doneList(newDone){
-  //   this.setState({
-  //     itemsDone: this.state.itemsDone.concat([newDone])
-  //   })
-  // }
+  doneList(newDone){
+    this.setState({
+      itemsDone: this.state.itemsDone.concat([newDone])
+    })
+  }
 
   render() {
     let { items } = this.state
-    // let { itemsDone } = this.state
+    let { itemsDone } = this.state
 
     return (
-      <div>
+      <div id = "Todo" >
+        <h1>To Do LisTY</h1>
         <TodoInput onAddList = { this.addList }/>
         <TodoList TodoItem = { items }/>
-        {/* <ListFinish ItemDone = { itemsDone }/> */}
+        <ListFinish ItemDone = { itemsDone }/>
       </div>
     )
   }

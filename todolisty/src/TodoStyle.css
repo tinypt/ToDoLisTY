@@ -1,0 +1,16 @@
+#Todo{
+    margin: 20px auto 20 px auto;
+    width: 75%;
+    border: 3px solid greenyellow;
+    padding: 20px;
+}
+
+#Todo h1{
+    text-align: center;
+    font-size: 30px;
+    color: darkslateblue;
+}
+
+#Topic{
+    padding: 15px;
+}

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import './TodoStyle.css'
+
 class TodoInput extends Component{
 
     constructor(props){
@@ -14,7 +16,8 @@ class TodoInput extends Component{
         let { onAddList } = this.props
         onAddList(this.state.newTodo)
         this.setState({
-                newTodo: ""
+                newTodo: "",
+                
         })
     }
 
@@ -23,7 +26,7 @@ class TodoInput extends Component{
         let {newTodo} = this.state
 
         return(
-            <div>
+            <div >
                 <input 
                     type = "text"
                     value = { newTodo }
