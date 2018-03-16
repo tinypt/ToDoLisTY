@@ -3,6 +3,7 @@ import React , { Component } from 'react'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
 import ListFinish from './ListFinish'
+import Doing from './Doing'
 import './TodoStyle.css'
 
 class App extends Component {
@@ -11,9 +12,11 @@ class App extends Component {
     super(props)
     this.state ={
       items: []
+      ,itemsDoing: []
       ,itemsDone: []
     }
     this.addList = this.addList.bind(this)
+    this.doingList = this.doingList.bind(this)
     this.doneList = this.doneList.bind(this)
     this.deleteArray = this.deleteArray.bind(this)
   }
@@ -24,27 +27,45 @@ class App extends Component {
     })
   }
 
+  doingList(newDoing){
+    this.setState({
+      itemsDoing: this.state.itemsDoing.concat([newDoing])
+    })
+  }
+
   doneList(newDone){
     this.setState({
       itemsDone: this.state.itemsDone.concat([newDone])
     })
   }
 
-  deleteArray(){
+  deleteArray(text){
+    let indexText = this.state.items.indexOf(text)
+    this.state.items.splice(indexText,1)
     this.setState({
-      items: this.state.items.splice(0,1)
+      items: this.state.items
     })
-  }   
+  }
+
+  deleteArrayDoing(text){
+    let indexText = this.state.items.indexOf(text)
+    this.state.items.splice(indexText,1)
+    this.setState({
+      items: this.state.items
+    })
+  }
 
   render() {
     let { items } = this.state
+    let { itemsDoing } = this.state
     let { itemsDone } = this.state
 
     return (
       <div id = "Todo" >
         <h1>To Do LisTY</h1>
         <TodoInput onAddList = { this.addList }/>
-        <TodoList TodoItem = { this.state.items } doDoneList = {this.doneList} doDeleteList = {this.deleteArray} />
+        <TodoList TodoItem = { this.state.items } doDoingList = { this.doingList } doDeleteList = { this.deleteArray } />
+        <Doing ItemDoing = { this.state.itemsDoing } doDoneList = { this.doneList } doDeleteList = { this.deleteArrayDoing }/>
         <ListFinish ItemDone = { this.state.itemsDone }/>
       </div>
     )

@@ -7,11 +7,11 @@ class TodoList extends Component{
     render(){
 
         let { TodoItem } = this.props
-
+        
         return(
             <div id = "Topic">To do
                <ul>
-                    { TodoItem.map (todo => <Item text = { todo } doDoneList= {this.props.doDoneList} doDeleteList = {this.props.deleteArray} /> ) }
+                    { TodoItem.map (todo => <Item items={ TodoItem } text = { todo } doDoingList= {this.props.doDoingList} doDeleteList = {this.props.doDeleteList} /> ) }
                </ul>
             </div>
         )

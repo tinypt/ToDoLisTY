@@ -11,7 +11,7 @@ class Finish extends Component{
         return(
             <div id = "Topic">DONE
                 <ul>
-                    { ItemDone.map (finished => <li> <ItemFininsh text2 ={ finished }/> </li>) }
+                    { ItemDone.map (finished => <li> <ItemFininsh text2 = { finished }/> </li>) }
                 </ul>
             </div>
         )

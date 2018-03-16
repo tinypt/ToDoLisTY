@@ -19,7 +19,7 @@ class TodoInput extends Component{
                 newTodo: ""
         })
     }
-
+             
     render(){
        
         let {newTodo} = this.state
