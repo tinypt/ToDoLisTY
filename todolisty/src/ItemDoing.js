@@ -11,8 +11,8 @@ class ItemDoing extends Component{
         let { doDoneList } = this.props
         doDoneList(this.props.textDoing)
         console.log(this.props.itemsDoing)
-        let { doDeleteList } = this.props
-        doDeleteList(this.props.textDoing)
+        let { doDeleteListDoing } = this.props
+        doDeleteListDoing(this.props.textDoing)
         console.log(this.props.itemsDoing)
     }
 

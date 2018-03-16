@@ -11,7 +11,7 @@ class Doing extends Component{
         return(
             <div id = "Topic">DOING..
                 <ul>
-                    { ItemDoing.map (doingNow => <li> <Item itemsDoing = { ItemDoing } textDoing = { doingNow } doDoneList = { this.props.doneList } doDeleteList = { this.props.doDeleteList } /> </li>) }
+                    { ItemDoing.map (doingNow => <li> <Item itemsDoing = { ItemDoing } textDoing = { doingNow } doDoneList = { this.props.doDoneList } doDeleteListDoing = { this.props.doDeleteListDoing } /> </li>) }
                 </ul>
             </div>
         )
