@@ -16,8 +16,7 @@ class TodoInput extends Component{
         let { onAddList } = this.props
         onAddList(this.state.newTodo)
         this.setState({
-                newTodo: "",
-                
+                newTodo: ""
         })
     }
 

@@ -6,7 +6,6 @@ class Item extends Component{
         super(props)
         this.state = {
             finish: false
-            ,newDone: ""
         }
         this.toggle = this.toggle.bind(this)
         this.done = this.done.bind(this)
@@ -19,28 +18,29 @@ class Item extends Component{
     }
 
     done(){
-        let { onDoneList } = this.props
-        onDoneList(this.state.newDone)
-        this.setState({
-                newDone: ""
-        })
+        let { doDoneList } = this.props
+        doDoneList(this.props.text)
+        let { doDeleteList } = this.props
+        // doDeleteList()
+        // console.log(this.props.TodoItem.map)
     }
-
+    
     render(){
 
         let { text } = this.props
         let { newDone } = this.state
 
         return(
-            <div>
+            <li>
                 <input
                     type = "checkbox"
                     value = { this.state.finish }
                     onClick = { this.toggle }
+                    
                 />
                 { this.state.finish ? "Doing : " + text : "New To do : " + text }
                 <button onClick = { this.done }>DONE</button>
-            </div>
+            </li>
         )
     }
 }
