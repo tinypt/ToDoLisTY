@@ -6,6 +6,10 @@ import ListFinish from './ListFinish'
 import Doing from './Doing'
 import './TodoStyle.css'
 
+import store from './redux/Store'
+import { connect } from 'react-redux'
+import { actions as appActions } from './redux/actions/actionApp'
+
 class App extends Component {
 
   constructor(props){
@@ -67,7 +71,7 @@ class App extends Component {
         <TodoInput onAddList = { this.addList }/>
         <TodoList TodoItem = { this.state.items } doDoingList = { this.doingList } doDeleteList = { this.deleteArray } />
         <Doing ItemDoing = { this.state.itemsDoing } doDoneList = { this.doneList } doDeleteListDoing = { this.deleteArrayDoing }/>
-        <ListFinish ItemDone = { this.state.itemsDone }/>
+        <ListFinish ItemDone = { this.state.itemsDone } /> 
       </div>
     )
   }
