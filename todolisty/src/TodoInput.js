@@ -1,10 +1,23 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
+import { addList } from './redux/actions/actionApp'
 import './TodoStyle.css'
 
-class TodoInput extends Component{
+const mapStateToProps = state => {
+    return {}
+}
 
-    constructor(props){
+const mapDispatchToProps = dispatch => {
+    return {
+        addList: bindActionCreators(addList, dispatch)
+    }
+}
+
+class TodoInput extends Component {
+
+    constructor(props) {
         super(props)
         this.state = {
             newTodo: ""
@@ -12,29 +25,28 @@ class TodoInput extends Component{
         this.addClicked = this.addClicked.bind(this)
     }
 
-    addClicked(){
-        let { onAddList } = this.props
-        onAddList(this.state.newTodo)
+    addClicked() {
+        this.props.addList(this.state.newTodo)
         this.setState({
-                newTodo: ""
+            newTodo: ""
         })
     }
-             
-    render(){
-       
-        let {newTodo} = this.state
 
-        return(
+    render() {
+
+        let { newTodo } = this.state
+
+        return (
             <div >
-                <input 
-                    type = "text"
-                    value = { newTodo }
-                    onChange = { (e)=>this.setState({ newTodo: e.target.value }) }
+                <input
+                    type="text"
+                    value={newTodo}
+                    onChange={(e) => this.setState({ newTodo: e.target.value })}
                 />
-                <button onClick = { this.addClicked }>ADD</button>
+                <button onClick={this.addClicked}>ADD</button>
             </div>
         )
     }
 }
 
-export default TodoInput
+export default connect(mapStateToProps, mapDispatchToProps)(TodoInput)

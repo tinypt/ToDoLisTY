@@ -1,21 +1,28 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import Item from './ItemDoing'
 
-class Doing extends Component{
+const mapStateToProps = state => {
+    return {
+        ItemDoing: state.itemsDoing
+    }
+}
 
-    render(){
+class Doing extends Component {
+
+    render() {
 
         let { ItemDoing } = this.props
 
-        return(
-            <div id = "Topic">DOING..
+        return (
+            <div id="Topic">DOING..
                 <ul>
-                    { ItemDoing.map (doingNow => <li> <Item itemsDoing = { ItemDoing } textDoing = { doingNow } doDoneList = { this.props.doDoneList } doDeleteListDoing = { this.props.doDeleteListDoing } /> </li>) }
+                    {ItemDoing && ItemDoing.map((doingNow, index) => <li> <Item itemsDoing={ItemDoing} textDoing={doingNow} key={`doing-${index}`} /> </li>)}
                 </ul>
             </div>
         )
     }
 }
 
-export default Doing
+export default connect(mapStateToProps)(Doing)

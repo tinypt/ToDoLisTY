@@ -1,32 +1,43 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-class Item extends Component{
+import { doingList, deleteArray } from './redux/actions/actionApp'
 
-    constructor(props){
+const mapStateToProps = state => {
+    return {}
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        doingList: bindActionCreators(doingList, dispatch),
+        deleteArray: bindActionCreators(deleteArray, dispatch)
+    }
+}
+
+class Item extends Component {
+
+    constructor(props) {
         super(props)
         this.done = this.done.bind(this)
     }
 
-    done(){
-        let { doDoingList } = this.props
-        doDoingList(this.props.text)
-        console.log(this.props.items)
-        let { doDeleteList } = this.props
-        doDeleteList(this.props.text)
-        console.log(this.props.items)
+    done() {
+        this.props.doingList(this.props.text)
+        this.props.deleteArray(this.props.text)
     }
-    
-    render(){
+
+    render() {
         let { text } = this.props
         console.log(this.context)
 
-        return(
+        return (
             <li>
-                { text }
-                <button onClick = { this.done }>DOING</button>
+                {text}
+                <button onClick={this.done}>DOING</button>
             </li>
         )
     }
 }
 
-export default Item
+export default connect(mapStateToProps, mapDispatchToProps)(Item)

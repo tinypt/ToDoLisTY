@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 
-class ItemFinish extends Component{
-
-    render(){
+class ItemFinish extends Component {
+    render() {
 
         let { text2 } = this.props
 
-        return(
+        return (
             <div>
-                { text2 }
+                {text2}
             </div>
         )
     }
